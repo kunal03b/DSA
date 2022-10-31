@@ -1,4 +1,5 @@
-// Various operations on stack
+// Various operations on stack (push, pop, etc)
+
 #include<iostream>
 using namespace std;
 
