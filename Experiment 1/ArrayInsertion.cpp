@@ -2,31 +2,36 @@
 
 #include <iostream>
 using namespace std;
-
-void arrayInsert(int arr[], int size, int position, int item){
-    for(int i = size; i < position; i--){
-        arr[i + 1] = arr[i];
+void insertelement(int *arr, int element, int &size, int pos){
+    size = size + 1;
+    for (int i = size; i >= pos; i--){
+        arr[i] = arr[i - 1];
     }
-    arr[position] = item;
+    arr[pos - 1] = element;
 }
-
-void arrayDelete(int arr[], int size, int position){
-    for(int i = position; i < size; i++){
-        arr[i] = arr[i + 1];
-    }
-    size = size - 1;
-}
-
-void printArray(int arr[], int size){
-    for(int i = 0; i < size; i++){
-        cout << arr[i] << endl;
-    }
-}
-
 int main(){
-    int arr[] ={1, 2, 3, 4, 5, 6, 7, 8};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    arrayInsert(arr, size, 2, 9);
-    printArray(arr, size);
-    return 0;
+    int arr[10000] = {0};
+    cout << "enter the size of array" << endl;
+    int size;
+    cin >> size;
+    cout << "enter the array elements" << endl;
+    for (int i = 0; i < size; i++){
+        cin >> arr[i];
+    }
+    cout << "printing the array before the insertion" << endl;
+    for (int i = 0; i < size; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    cout << "enter the element" << endl;
+    int element;
+    int position;
+    cin >> element;
+    cout << "enter the position" << endl;
+    cin >> position;
+    insertelement(arr, element, size, position);
+    cout << "printing the array after the insertion" << endl;
+    for (int i = 0; i < size; i++){
+        cout << arr[i] << " ";
+    }
 }
